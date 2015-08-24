@@ -7,11 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SomeClass.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSArray *probablyImmutableArray = [[SomeClass new] returnSomeImmutableArray];
+        NSArray *immutableArray = [NSArray new];
+        
+        if ([immutableArray isKindOfClass:[NSMutableArray class]]) {
+            NSLog(@"immutableArray: mutable");
+        } else {
+            NSLog(@"immutableArray: immutable");
+        }
+        
+        if ([probablyImmutableArray isKindOfClass:[NSMutableArray class]]) {
+            NSLog(@"probablyImmutableArray: mutable");
+        } else {
+            NSLog(@"probablyImmutableArray: immutable");
+        }
     }
     return 0;
 }
